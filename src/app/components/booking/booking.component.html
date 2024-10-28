@@ -1,0 +1,27 @@
+<div class="container border b--light-green">
+    <div class="confirmation-container" *ngIf="bookingDetails && bookingDetails._id">
+        <h2>Booking Confirmed!</h2>
+        <p>Thank you for booking with us.</p>
+      
+        <div class="details">
+          <p><strong>Booking Id: </strong> {{ bookingDetails?._id | uppercase}}</p>
+          <p><strong>Customer Name: </strong> {{ bookingDetails?.name}}</p>
+          <p><strong>Contact: </strong> {{ bookingDetails?.mobile}}</p>
+          <p><strong>Origin Location: </strong> <i>{{ bookingDetails?.originLocation}}</i></p>
+          <p><strong>Destination Location: </strong> <i>{{ bookingDetails?.destinationLocation}}</i></p>
+          <p><strong>Approx Distance: </strong> {{ bookingDetails?.totalDistance}}Km.</p>
+          <p><strong>Amount To Be Paid:</strong> ₹{{ bookingDetails?.totalPrice}}/- <small>(Excluding Road Tax + Holding Charges)</small></p>
+        </div>
+      
+        <button class="btn btn-sm btn-outline-secondary m-2" (click)="goHome()">Back to Home</button>
+        <button class="btn btn-sm btn-dark m-2" (click)="payAmount('ONLINE')">Pay Online</button>
+        <button class="btn btn-sm btn-success m-2" (click)="payAmount('OFFLINE')">Pay Offline</button>
+      </div>
+
+      <div class="card text-center m-4 bg-almond" *ngIf="!bookingDetails">
+        <h5 class="text-danger p-3">No Booking available !</h5>
+        <button class="btn btn-sm btn-outline-secondary" (click)="goHome()">Back to Home</button>
+      </div>
+
+      
+</div>

@@ -1,0 +1,117 @@
+<!-- carousel -->
+<div id="carouselExampleCaptions" class="carousel slide">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="../../../assets/bbsr_cover_1.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="img-name">BBSR CITY</h3>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="../../../assets/bbsr_cover_2.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h3 class="img-name">PURI SEA BEACH</h3>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="../../../assets/bbsr_cover_3.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5 class="img-name">ODISHA TOURIST SPOT</h5>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<!-- Booking Section  -->
+ <div class="container-fluid b--black">
+  <div class="row">
+    <div class="col-md-6 col-sm-12">
+      <img class="img-board" src="../../../assets/innova-2.jpg" alt="">
+    </div>
+    <div class="col-md-6 col-sm-12 border-1 bg-black">
+        <div class="card m-4 p-4">
+            <form class="card-body" #bookingData="ngForm" (ngSubmit)="submitData(bookingData.value)">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-auto">
+                        <h4>BOOK YOR CAR FOR</h4>
+                    </div>
+                </div>
+                <!-- <div class="row d-flex justify-content-center">
+                    <div class="text-center">
+                        <span>Choose selected route</span>
+                    </div>
+                    <div class="card col-auto m-2 onselect">
+                        <div class="card-body text-center">
+                            <strong>Bhubaneswar -to- Puri</strong><br>
+                            <span>Approx 63.1 Km - 1H 12Min - Price : Rs.1500/-</span>
+                        </div>
+                    </div>
+                    <div class="card col-auto m-2 onselect">
+                        <div class="card-body text-center">
+                            <strong>Bhubaneswar -to- Konark Sun Temple</strong><br>
+                            <span>Approx 66.5 Km - 1H 33Min - Price : Rs.1800/-</span>
+                        </div>
+                    </div>
+                </div>
+                <hr> -->
+                <div class="text-center">
+                    <span>Select yor preferable route</span>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-auto-lg m-2">
+                        <input type="search" class="form-control" [(ngModel)]="originLocation" (keyup)="getAddressList($event, 'ORIGIN')" name="originLocation" placeholder="Search start location">
+                        <div class="list" *ngIf="originAddressList && originAddressList.length> 0">
+                            <a class="nav-link border m-1" *ngFor="let add of originAddressList" (click)="setAddress(add, 'ORIGIN')">{{add.display_name}}</a>
+                        </div>
+                    </div>
+                    <div class="col-auto-lg m-2">
+                        <input type="search" class="form-control" [(ngModel)]="destinationLocation" (keyup)="getAddressList($event, 'DESTINATION')" name="destinationLocation" placeholder="Search destination location">
+                        <div class="list" *ngIf="destinationAddressList && destinationAddressList.length> 0">
+                            <a class="nav-link border m-1" *ngFor="let add of destinationAddressList" (click)="setAddress(add, 'DESTINATION');calculateDistance()">{{add.display_name}}</a>
+                        </div>
+                    </div>
+                    <div class="row m-2" *ngIf="totalDistance && totalPrice">
+                        <label class="col-5 label-1 form-control m-1 b--gray" *ngIf="totalDistance">Distance : {{totalDistance || 0}} Km.</label>
+                        <label class="col-5 label-2 form-control m-1 b--gray" *ngIf="totalPrice">Fare : ₹ {{totalPrice || 0.00}}/- <small>(Excluding Road Tax + Holding Charges)</small></label>
+                    </div>
+                    <div class="col-auto-lg m-2">
+                        <input type="text" class="form-control" ngModel name="name" placeholder="Enter you name">
+                    </div>
+                    <div class="col-auto-lg m-2">
+                        <input type="number" class="form-control" ngModel name="mobile" placeholder="Enter mobile number">
+                    </div>
+                    <div class="col-auto-lg m-2">
+                        <input type="email" class="form-control" ngModel name="email" placeholder="Enter email (optional)">
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-auto mt-2">
+                        <button class="btn btn-outline-info" type="submit">Booking Enquery</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+ </div>
+
+
+
